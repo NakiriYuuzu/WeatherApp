@@ -22,108 +22,488 @@
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.Material3.CardView.Elevated"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" >
+        app:layout_constraintTop_toBottomOf="@+id/title">
 
-        <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.Material3.CardView.Elevated"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView"
+                style="@style/Widget.Material3.CardView.Elevated"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
-                    android:id="@+id/linearLayout"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:id="@+id/linearLayout2"
-                        android:layout_width="0dp"
+                        android:id="@+id/linearLayout"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:padding="16dp"
+                        android:orientation="horizontal"
                         android:weightSum="2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/titleCity"
-                            android:layout_width="match_parent"
+                        <LinearLayout
+                            android:id="@+id/linearLayout2"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="16dp"
+                            android:weightSum="2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/titleCity"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/home_fragment_title"
+                                android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/titleCountry"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/home_fragment_title"
+                                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="0dp"
+                            android:layout_height="120dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:src="@drawable/sunny" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:weightSum="2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/titleTemp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/home_fragment_title"
                             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                            android:textSize="30sp"
                             android:textStyle="bold" />
 
                         <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/titleCountry"
-                            android:layout_width="match_parent"
+                            android:id="@+id/titleState"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/home_fragment_title"
+                            android:textAlignment="center"
                             android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                             android:textStyle="normal" />
 
                     </LinearLayout>
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_weight="1" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="16dp"
+                    android:weightSum="2"
+                    tools:ignore="UselessParent">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:background="#80FFFFFF"
+                        android:translationZ="2dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="4dp"
+                        android:weightSum="2">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/highlow"
+                            tools:ignore="NestedWeights" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_highlow"
+                            tools:ignore="NestedWeights" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tvLowHigh"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/home_fragment_title"
+                            android:textAlignment="textEnd"
+                            tools:ignore="RtlCompat" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linearLayout3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="16dp"
                     android:weightSum="2"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+                    tools:ignore="UselessParent">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/titleTemp"
-                        android:layout_width="0dp"
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:background="#80FFFFFF"
+                        android:translationZ="2dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/home_fragment_title"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"/>
+                        android:orientation="horizontal"
+                        android:padding="4dp"
+                        android:weightSum="2">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/titleState"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/home_fragment_title"
-                        android:textStyle="normal"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"/>
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_baseline_hot_tub_24"
+                            tools:ignore="NestedWeights" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_feelLikeTemp"
+                            tools:ignore="NestedWeights" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tvFeelLike"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/home_fragment_title"
+                            android:textAlignment="textEnd"
+                            tools:ignore="RtlCompat" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="16dp"
+                    android:weightSum="2"
+                    tools:ignore="UselessParent">
 
-        </com.google.android.material.card.MaterialCardView>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:background="#80FFFFFF"
+                        android:translationZ="2dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="4dp"
+                        android:weightSum="2">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/humidity"
+                            tools:ignore="NestedWeights" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_Humid"
+                            tools:ignore="NestedWeights" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tvHumid"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/home_fragment_title"
+                            android:textAlignment="textEnd"
+                            tools:ignore="RtlCompat" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="16dp"
+                    android:weightSum="2"
+                    tools:ignore="UselessParent">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:background="#80FFFFFF"
+                        android:translationZ="2dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="4dp"
+                        android:weightSum="2">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/pressure"
+                            tools:ignore="NestedWeights" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_Pressure"
+                            tools:ignore="NestedWeights" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tvPressure"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/home_fragment_title"
+                            android:textAlignment="textEnd"
+                            tools:ignore="RtlCompat" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="16dp"
+                    android:weightSum="2"
+                    tools:ignore="UselessParent">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:background="#80FFFFFF"
+                        android:translationZ="2dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="4dp"
+                        android:weightSum="2">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/visibility"
+                            tools:ignore="NestedWeights" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_Visibility"
+                            tools:ignore="NestedWeights" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tvVisibility"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/home_fragment_title"
+                            android:textAlignment="textEnd"
+                            tools:ignore="RtlCompat" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="16dp"
+                    android:weightSum="2"
+                    tools:ignore="UselessParent">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:background="#80FFFFFF"
+                        android:translationZ="2dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="4dp"
+                        android:weightSum="2">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/wind"
+                            tools:ignore="NestedWeights" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/tv_Wind"
+                            tools:ignore="NestedWeights" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tvWind"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/home_fragment_title"
+                            android:textAlignment="textEnd"
+                            tools:ignore="RtlCompat" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="16dp"
+                    android:weightSum="2"
+                    tools:ignore="UselessParent">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:background="#80FFFFFF"
+                        android:translationZ="2dp"
+                        tools:ignore="InefficientWeight" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
 

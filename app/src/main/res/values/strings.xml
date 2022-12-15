@@ -15,4 +15,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- Layout -->
+    <string name="tv_highlow">Low/High</string>
+    <string name="tv_Humid">Humidity</string>
+    <string name="tv_Pressure">Pressure</string>
+    <string name="tv_Visibility">Visibility</string>
+    <string name="tv_Wind">Wind</string>
+    <string name="tv_feelLikeTemp">FeelLike</string>
+
 </resources>
