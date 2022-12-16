@@ -1,8 +1,11 @@
 package tw.edu.pu.myapp.data.mapper
 
+import android.annotation.SuppressLint
 import tw.edu.pu.myapp.data.remote.WeatherDataDto
 import tw.edu.pu.myapp.data.remote.WeatherDto
 import tw.edu.pu.myapp.domain.weather.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 fun WeatherDataDto.toWeatherDetail(): WeatherDetail {
     return WeatherDetail(
@@ -17,15 +20,21 @@ fun WeatherDataDto.toWeatherDetail(): WeatherDetail {
     )
 }
 
+@SuppressLint("SimpleDateFormat")
 fun WeatherDto.toWeatherInfo(): WeatherInfo {
-    val weatherDetailList = list.map { it.toWeatherDetail() }
-    val weatherDetailData = weatherDetailList.take(4)
+    val currentTime = Calendar.getInstance().timeInMillis
+    val weatherDetailList = list.map {
+        val weatherTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(it.dt_txt)!!.time
+        if (weatherTime <= currentTime) it.toWeatherDetail() else null
+    }
+
+    val weatherDetailData = weatherDetailList.filterNotNull()
     val miniDataList: MutableList<WeatherMiniData> = mutableListOf()
 
     weatherDetailData.forEach {
         val miniData = WeatherMiniData(
             datetime = it.datetime,
-            temperature = it.temperature,
+            temperature = it.temperature.toInt(),
             weatherType = WeatherType.fromWeather(it.weatherId)
         )
 
@@ -36,7 +45,7 @@ fun WeatherDto.toWeatherInfo(): WeatherInfo {
 
     return WeatherInfo(
         currentWeatherData = WeatherData(
-            datetime = currentData.datetime,
+            datetime = currentData!!.datetime,
             temperature = currentData.temperature,
             lowHigh = currentData.lowHigh,
             pressure = currentData.pressure,

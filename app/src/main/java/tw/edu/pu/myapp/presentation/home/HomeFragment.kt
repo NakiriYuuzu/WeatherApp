@@ -7,6 +7,7 @@ import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import tw.edu.pu.myapp.R
 import tw.edu.pu.myapp.databinding.FragmentHomeBinding
 import tw.edu.pu.myapp.library.DialogHelper
@@ -21,12 +22,25 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private lateinit var dialogHelper: DialogHelper
 
+    private lateinit var homeAdapter: HomeAdapter
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
 
 
         initView()
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+        binding.recyclerView.apply {
+            val linearLayoutManager = LinearLayoutManager(requireContext())
+            linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+            layoutManager = linearLayoutManager
+            hasFixedSize()
+            adapter = homeAdapter
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -50,6 +64,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         binding.tvWind.text = "${it.data.windSpeed} km/h"
                         binding.tvPressure.text = "${it.data.pressure} hPa"
                         binding.tvVisibility.text = "${it.data.visibility} km"
+                        binding.imageView.setImageResource(it.data.weatherType.iconRes)
+                        homeAdapter.differ.submitList(it.data.weatherMiniData)
                     }
 
                     is WeatherViewModel.WeatherState.Error -> {
@@ -65,6 +81,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun initView() {
         dialogHelper = DialogHelper(requireActivity())
+        homeAdapter = HomeAdapter()
 
         Handler(Looper.getMainLooper()).postDelayed({
             viewModel = (activity as MainActivity).viewModel

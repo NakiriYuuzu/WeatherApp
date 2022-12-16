@@ -12,8 +12,14 @@
 
     <!-- ERROR OR EXCEPTION -->
     <string name="error_title">Error</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_permission_title">No Permission Access</string>
+    <string name="no_permission_message">Please grant permission to access location</string>
+    <string name="no_GPS_title">No GPS Access</string>
+    <string name="no_GPS_message">Please turn on GPS</string>
+
+    <!-- Dialog -->
+    <string name="positive_button">OK</string>
+    <string name="negative_button">Cancel</string>
 
     <!-- Layout -->
     <string name="tv_highlow">Low/High</string>
@@ -22,5 +28,6 @@
     <string name="tv_Visibility">Visibility</string>
     <string name="tv_Wind">Wind</string>
     <string name="tv_feelLikeTemp">FeelLike</string>
+    <string name="tv_Pass3Hour">Day Per 3 Hour</string>
 
 </resources>
