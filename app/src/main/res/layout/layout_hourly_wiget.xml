@@ -48,7 +48,7 @@
                 android:layout_weight="1"
                 android:text="@string/home_fragment_title"
                 android:textAlignment="center"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:translationZ="2dp" />
 
 

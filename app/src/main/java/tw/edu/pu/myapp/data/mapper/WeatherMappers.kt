@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import tw.edu.pu.myapp.data.remote.WeatherDataDto
 import tw.edu.pu.myapp.data.remote.WeatherDto
 import tw.edu.pu.myapp.domain.weather.*
-import java.text.SimpleDateFormat
 import java.util.*
 
 fun WeatherDataDto.toWeatherDetail(): WeatherDetail {
@@ -22,13 +21,15 @@ fun WeatherDataDto.toWeatherDetail(): WeatherDetail {
 
 @SuppressLint("SimpleDateFormat")
 fun WeatherDto.toWeatherInfo(): WeatherInfo {
-    val currentTime = Calendar.getInstance().timeInMillis
+    // val currentTime = Calendar.getInstance().timeInMillis
     val weatherDetailList = list.map {
-        val weatherTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(it.dt_txt)!!.time
-        if (weatherTime <= currentTime) it.toWeatherDetail() else null
+        it.toWeatherDetail()
+//        val weatherTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(it.dt_txt)!!.time
+//        if (weatherTime < currentTime) it.toWeatherDetail()
+//        else null
     }
 
-    val weatherDetailData = weatherDetailList.filterNotNull()
+    val weatherDetailData = weatherDetailList.toList()
     val miniDataList: MutableList<WeatherMiniData> = mutableListOf()
 
     weatherDetailData.forEach {
@@ -45,7 +46,7 @@ fun WeatherDto.toWeatherInfo(): WeatherInfo {
 
     return WeatherInfo(
         currentWeatherData = WeatherData(
-            datetime = currentData!!.datetime,
+            datetime = currentData.datetime,
             temperature = currentData.temperature,
             lowHigh = currentData.lowHigh,
             pressure = currentData.pressure,
@@ -54,6 +55,7 @@ fun WeatherDto.toWeatherInfo(): WeatherInfo {
             windSpeed = currentData.windSpeed,
             city = city.name,
             country = city.country,
+            isExpand = false,
             weatherType = WeatherType.fromWeather(currentData.weatherId),
             weatherMiniData = miniDataList
         )

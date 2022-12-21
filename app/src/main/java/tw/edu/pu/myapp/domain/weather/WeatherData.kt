@@ -10,6 +10,7 @@ data class WeatherData(
     val visibility: Int,
     val city: String,
     val country: String,
+    var isExpand: Boolean,
     val weatherType: WeatherType,
     val weatherMiniData: List<WeatherMiniData>
 )

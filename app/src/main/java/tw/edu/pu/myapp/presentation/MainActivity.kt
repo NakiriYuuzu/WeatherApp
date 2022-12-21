@@ -39,8 +39,9 @@ class MainActivity : AppCompatActivity() {
         if (!requestHelper.checkGPS()) DialogHelper(this)
             .showDialog(getString(R.string.no_GPS_title), getString(R.string.no_GPS_message), false)
 
-        viewModel = WeatherViewModel()
+        viewModel = WeatherViewModel(app = application)
         viewModel.loadWeatherInfo(24.2163967,120.5854669)
+        viewModel.loadFavoriteCitiesWeatherInfo()
     }
 
     private fun splashScreen() {
@@ -50,5 +51,17 @@ class MainActivity : AppCompatActivity() {
                 binding.splashScreen.visibility = View.GONE
             }, 1000L)
         }, 1000L)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadWeatherInfo(24.2163967,120.5854669)
+        viewModel.loadFavoriteCitiesWeatherInfo()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        viewModel.loadWeatherInfo(24.2163967,120.5854669)
+        viewModel.loadFavoriteCitiesWeatherInfo()
     }
 }

@@ -13,6 +13,12 @@ interface WeatherApi {
         @Query("appid") appid: String,
     ): WeatherDto
 
+    @GET("data/2.5/forecast?")
+    suspend fun getWeatherByCity(
+        @Query("q") city: String,
+        @Query("appid") appid: String,
+    ): WeatherDto
+
     companion object {
         val instance: WeatherApi by lazy {
             Retrofit.Builder()

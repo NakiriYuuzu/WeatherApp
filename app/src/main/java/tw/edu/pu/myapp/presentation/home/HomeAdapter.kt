@@ -35,11 +35,12 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         holder.binding.apply {
-            val time = differ.currentList[position].datetime.substring(11, 16)
+            val data = differ.currentList[position]
+            val dateTime = data.datetime.substring(5, 16)
 
-            Icon.setImageResource(differ.currentList[position].weatherType.iconRes)
-            tvTemp.text = "${differ.currentList[position].temperature}°C"
-            tvTime.text = time
+            Icon.setImageResource(data.weatherType.iconRes)
+            tvTemp.text = "${data.temperature}°C"
+            tvTime.text = dateTime
         }
     }
 
