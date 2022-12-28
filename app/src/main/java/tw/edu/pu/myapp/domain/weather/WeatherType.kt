@@ -40,11 +40,13 @@ sealed class WeatherType(
     companion object {
         fun fromWeather(code: Int): WeatherType {
             return when(code) {
-                in 0..300 -> Thunder
-                in 301..400 -> Thunderstorm
-                in 401..600 -> Rainy
-                in 601..700 -> Snowy
-                in 701..799 -> Cloudy
+                in 200..233 -> Thunderstorm
+                in 300..302 -> Rainy
+                in 500..549 -> Rainy
+                in 600..623 -> Snowy
+                800 -> Sunny
+                in 801..804 -> Cloudy
+                in 900..904 -> Thunder
                 else -> Sunny
             }
         }
